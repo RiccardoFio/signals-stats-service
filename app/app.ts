@@ -10,17 +10,17 @@ routingUseContainer(Container)
 
 const port = process.env.PORT || 3000;
 
-const app = createExpressServer({
-    controllers: [SignalController]
-});
-
-app.listen(port, () => {
-    console.log("Signal service listening on port " + port);
-})
-
 createConnection()
 .then(async connection => {
     console.log("Database connection started successfully");
+    
+    const app = createExpressServer({
+        controllers: [SignalController]
+    });
+
+    app.listen(port, () => {
+        console.log("Signal service listening on port " + port);
+    })
 })
 .catch(error => console.log(error))
 
