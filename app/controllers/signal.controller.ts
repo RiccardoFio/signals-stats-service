@@ -11,11 +11,13 @@ export class SignalController {
     
     @Get('/:id')
     async getOneById(@Param('id') id: number): Promise<Signal>{
+        console.log("Received GET request to view the signal of a device")
         return await this.signalService.getOneById(id);
     }
 
     @Get('/device/:deviceId')
     async getAllByDeviceId(@Param('deviceId') deviceId: number): Promise<Signal[]>{
+        console.log("Received GET request to view all the signals of a device")
         return await this.signalService.getAllByDeviceId(deviceId);
     }
 }
